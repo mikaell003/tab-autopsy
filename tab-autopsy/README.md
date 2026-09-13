@@ -44,19 +44,3 @@ No build step, no npm install — this is plain JS/HTML/CSS, load it as-is.
   auto-purge age, and a domain exclude-list (e.g. mail/docs you never want
   auto-buried).
 
-## Known limitations worth knowing about before you ship this further
-
-- Snippet capture needs `host_permissions: <all_urls>` and won't work on
-  pages Chrome blocks extensions from touching (chrome://, the Web Store,
-  most PDF viewers) — those tabs still bury fine, just with no preview text.
-- Search is a plain substring match over title/snippet/URL, not real
-  full-text/fuzzy search. Fine at hundreds of entries; if the graveyard
-  grows into the thousands you'd want an actual index (e.g. a tiny inverted
-  index kept alongside the array, or move storage to IndexedDB).
-- There's no sync across devices — `chrome.storage.local` is per-machine.
-  `chrome.storage.sync` would fix that but has much smaller size quotas,
-  so a real cross-device version would need a different storage strategy
-  for the graveyard specifically.
-- No onboarding/first-run explanation in this build — first-time users hit
-  the popup cold. Worth a one-time tooltip or first-run page before a public
-  release.
