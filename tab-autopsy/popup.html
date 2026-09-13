@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Tab Autopsy</title>
+<link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-title">
+      <span class="glyph">†</span>
+      <h1>Tab Autopsy</h1>
+    </div>
+    <div class="case-count" id="caseCount">0 interred</div>
+  </header>
+
+  <div class="search-row">
+    <input type="text" id="search" placeholder="Search by title, snippet, or url…" autocomplete="off" />
+  </div>
+
+  <div class="quick-actions">
+    <button class="btn-outline" id="closeAll">Close all tabs</button>
+    <button class="btn-outline" id="closeAllExcept">Close all but this</button>
+  </div>
+
+  <main id="list" class="list"></main>
+
+  <template id="batchTemplate">
+    <section class="batch">
+      <div class="batch-label"></div>
+      <div class="batch-entries"></div>
+    </section>
+  </template>
+
+  <template id="entryTemplate">
+    <article class="entry">
+      <img class="favicon" alt="" />
+      <div class="entry-body">
+        <div class="entry-title"></div>
+        <div class="entry-snippet"></div>
+        <div class="entry-meta">
+          <span class="death-tag"></span>
+          <span class="buried-ago"></span>
+        </div>
+      </div>
+      <div class="entry-actions">
+        <button class="icon-btn restore" title="Resurrect">↺</button>
+        <button class="icon-btn delete" title="Delete">×</button>
+      </div>
+    </article>
+  </template>
+
+  <div id="empty" class="empty-state">
+    Nothing buried yet. Tabs left idle past the configured time end up here — search still works after they're gone.
+  </div>
+
+  <footer class="footer">
+    <button id="clearAll" class="link-btn">Clear graveyard</button>
+    <button id="openOptions" class="link-btn">Settings</button>
+  </footer>
+
+  <script src="common.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
